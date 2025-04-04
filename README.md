@@ -1,4 +1,6 @@
-# Gemini Function Calling with Model Context Protocol(MCP) Flight Search
+# Gemini Function Calling + Model Context Protocol(MCP) Flight Search
+
+![Architecture](Images/mcp-gemini-architecture.png)
 
 This project demonstrates how to use Google's Gemini API with function calling capabilities to interact with the `mcp-flight-search` tool via Model Context Protocol (MCP). This client implementation shows how to:
 
@@ -79,6 +81,79 @@ This project relies on several Python packages:
     *   Get your Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
     *   Get your SerpAPI key from [SerpApi](https://serpapi.com/manage-api-key)
 
+## Architecture
+
+This project integrates multiple components to enable natural language flight search. Here's how the system works:
+
+### Component Interactions
+
+1. **User to Client**
+   - User provides natural language query (e.g., "Find flights from Atlanta to Las Vegas tomorrow")
+   - Client script (`client.py`) processes the input
+
+2. **Client to MCP Server**
+   - Client starts the MCP server process (`mcp-flight-search`)
+   - Establishes stdio communication channel
+   - Retrieves available tools and their descriptions
+
+3. **Client to Gemini API**
+   - Sends the user's query
+   - Provides tool descriptions for function calling
+   - Receives structured function call with extracted parameters
+
+4. **Client to MCP Tool**
+   - Takes function call parameters from Gemini
+   - Calls appropriate MCP tool with parameters
+   - Handles response processing
+
+5. **MCP Server to SerpAPI**
+   - MCP server makes requests to SerpAPI
+   - Queries Google Flights data
+   - Processes and formats flight information
+
+### Data Flow
+
+1. **Input Processing**
+   ```
+   User Query → Natural Language Text → Gemini API → Structured Parameters
+   ```
+
+2. **Flight Search**
+   ```
+   Parameters → MCP Tool → SerpAPI → Flight Data → JSON Response
+   ```
+
+3. **Result Handling**
+   ```
+   JSON Response → Parse → Format → Display to User
+   ```
+
+### Communication Protocols
+
+1. **Client ↔ MCP Server**
+   - Uses stdio communication
+   - Follows MCP protocol for tool registration and calls
+   - Handles asynchronous operations
+
+2. **MCP Server ↔ SerpAPI**
+   - HTTPS requests
+   - JSON data exchange
+   - API key authentication
+
+3. **Client ↔ Gemini API**
+   - HTTPS requests
+   - Function calling protocol
+   - API key authentication
+
+### Error Handling
+
+The integration includes error handling at multiple levels:
+- Input validation
+- API communication errors
+- Tool execution failures
+- Response parsing issues
+- Data formatting problems
+
 ## Usage
 
 Run the client:
@@ -96,17 +171,6 @@ The script will:
 ### Example Output
 
 ![Example Output](Images/mcp-gemini-output.gif)
-
-## How It Works
-
-The client script (`client.py`):
-1.  Initializes the Gemini API client
-2.  Starts and connects to the MCP server process
-3.  Gets the available tools from the server
-4.  Sends the natural language prompt to Gemini along with tool descriptions
-5.  Receives function call parameters from Gemini
-6.  Executes the flight search using those parameters
-7.  Formats and displays the results
 
 ## Related Projects
 
