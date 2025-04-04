@@ -1,6 +1,8 @@
 # Gemini Function Calling + Model Context Protocol(MCP) Flight Search
 
-![Architecture](Images/mcp-gemini-architecture.png)
+![Example Output](Images/mcp-gemini-search-demo.gif)
+
+![Architecture](Images/mcp-gemini-architecture-1.png)
 
 This project demonstrates how to use Google's Gemini API with function calling capabilities to interact with the `mcp-flight-search` tool via Model Context Protocol (MCP). This client implementation shows how to:
 
@@ -168,9 +170,6 @@ The script will:
 4.  Execute the search via the MCP tool
 5.  Display the formatted results
 
-### Example Output
-
-![Example Output](Images/mcp-gemini-output.gif)
 
 ## Related Projects
 
