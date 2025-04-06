@@ -1,4 +1,4 @@
-# pip install google-generativeai mcp-sdk-python
+# pip install google-generativeai mcp
 import asyncio
 import os
 # Add json import for formatting output
