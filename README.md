@@ -4,17 +4,17 @@
 
 ![Architecture](Images/mcp-gemini-architecture-final.png)
 
-This project demonstrates how to use Google's Gemini API with function calling capabilities to interact with the `mcp-flight-search` tool via Model Context Protocol (MCP). This client implementation shows how to:
+This project demonstrates how to use Google's Gemini 2.5 Pro with function calling capabilities to interact with the `mcp-flight-search` tool via Model Context Protocol (MCP). This client implementation shows how to:
 
 1.  Connect to a local MCP server process (`mcp-flight-search`) using stdio communication
-2.  Use natural language prompts with Gemini to search for flights (e.g., "Find flights from Atlanta to Las Vegas on 2025-05-05")
+2.  Use natural language prompts with Gemini 2.5 Pro to search for flights (e.g., "Find flights from Atlanta to Las Vegas on 2025-05-05")
 3.  Let Gemini automatically determine the correct function parameters from the natural language input
 4.  Execute the flight search using the MCP tool
 5.  Display formatted results from the search
 
 ## Features
 
-*   Natural language flight search using Gemini API
+*   Natural language flight search using Gemini 2.5 Pro
 *   Automatic parameter extraction via function calling
 *   Integration with `mcp-flight-search` tool via stdio
 *   Formatted JSON output of flight results
@@ -25,7 +25,7 @@ This project demonstrates how to use Google's Gemini API with function calling c
 Before running this client, you'll need:
 
 1.  Python 3.7+
-2.  A Google AI Studio API key for Gemini
+2.  A Google AI Studio API key for Gemini 
 3.  A SerpAPI key (used by the flight search tool)
 4.  The `mcp-flight-search` package installed
 
@@ -33,8 +33,8 @@ Before running this client, you'll need:
 
 This project relies on several Python packages:
 
-*   **google-generativeai**: Google's official Python library for accessing Gemini and other Google AI models.
-    - Provides the client interface for Gemini API
+*   **google-generativeai**: Google's official Python library for accessing Gemini 2.5 Pro and other Google AI models.
+    - Provides the client interface for Gemini 2.5 Pro
     - Handles function calling capabilities
     - Manages API authentication and requests
 
@@ -98,7 +98,7 @@ This project integrates multiple components to enable natural language flight se
    - Establishes stdio communication channel
    - Retrieves available tools and their descriptions
 
-3. **Client to Gemini API**
+3. **Client to Gemini 2.5 Pro**
    - Sends the user's query
    - Provides tool descriptions for function calling
    - Receives structured function call with extracted parameters
@@ -117,7 +117,7 @@ This project integrates multiple components to enable natural language flight se
 
 1. **Input Processing**
    ```
-   User Query → Natural Language Text → Gemini API → Structured Parameters
+   User Query → Natural Language Text → Gemini 2.5 Pro → Structured Parameters
    ```
 
 2. **Flight Search**
@@ -142,7 +142,7 @@ This project integrates multiple components to enable natural language flight se
    - JSON data exchange
    - API key authentication
 
-3. **Client ↔ Gemini API**
+3. **Client ↔ Gemini 2.5 Pro**
    - HTTPS requests
    - Function calling protocol
    - API key authentication
@@ -165,7 +165,7 @@ python client.py
 
 The script will:
 1.  Start the MCP flight search server process
-2.  Send your flight search query to Gemini
+2.  Send your flight search query to 2.5 Pro
 3.  Use Gemini's function calling to extract search parameters
 4.  Execute the search via the MCP tool
 5.  Display the formatted results

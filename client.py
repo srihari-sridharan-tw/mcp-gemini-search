@@ -47,7 +47,7 @@ async def run():
             # Remove debug prints
 
             response = client.models.generate_content(
-                model="gemini-2.0-flash",
+                model="gemini-2.5-pro-exp-03-25",
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     temperature=0,
