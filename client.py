@@ -1,10 +1,9 @@
 # pip install google-generativeai mcp
 import asyncio
-import os
 # Add json import for formatting output
 import json
-from array import ArrayType
-from datetime import datetime
+import os
+
 from google import genai
 from google.genai import types
 from mcp import ClientSession, StdioServerParameters
