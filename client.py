@@ -49,7 +49,7 @@ async def run():
                 model="gemini-2.5-pro",
                 contents=prompt,
                 config=types.GenerateContentConfig(
-                    temperature=1.0,
+                    temperature=0,
                     tools=tools,
                 ),
             )
